@@ -1,7 +1,8 @@
-import "./tailwind.css";
+import "./global.css";
+import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import ConvexClientProvider from "./ConvexClientProvider";
+import ConvexClientProvider from "./(components)/ConvexClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,10 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ConvexClientProvider>{children}</ConvexClientProvider>
-      </body>
-    </html>
+    <ConvexClientProvider>
+      <html lang="en">
+        <body className={clsx(inter.className, 'text-white bg-accent-1')}>{children}</body>
+      </html>
+    </ConvexClientProvider>
   );
 }
