@@ -1,18 +1,19 @@
 "use client";
 
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 
 import { api } from "../../convex/_generated/api";
 import clsx from "clsx";
 
 export default function Home() {
   const todos = useQuery(api.todos.get);
+  const updateTodo = useMutation(api.todos.updateTodo)
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen space-y-5">
       <h1 className="font-bold text-xl">Convex + NextJS</h1>
       <div className="flex flex-col items-center w-full max-w-xl p-3 space-y-3 rounded-xl border border-neutral-700 bg-accent-2">
-        {todos === undefined && <h2>Loading...</h2>}
+        {todos === undefined && <h2 className="font-light italic">Loading...</h2>}
         <ul className="flex flex-col items-center w-full space-y-3">
           {todos?.map((todo) => (
             <li
@@ -24,7 +25,12 @@ export default function Home() {
                 <button
                   type="button"
                   className="outline-none transition ease-in-out duration-200 transform hover:scale-110"
-                  onClick={() => console.log("Done/Undone")}
+                  onClick={async () => {
+                    await updateTodo({
+                      _id: todo._id,
+                      done: todo.done ? false : true
+                    })
+                  }}
                 >
                   <svg
                     className="fill-current w-6 h-6 text-blue-600"
@@ -44,7 +50,12 @@ export default function Home() {
                 <button
                   type="button"
                   className="outline-none transition ease-in-out duration-200 transform hover:scale-110"
-                  onClick={() => console.log("Done/Undone")}
+                  onClick={async () => {
+                    await updateTodo({
+                      _id: todo._id,
+                      done: todo.done ? false : true
+                    })
+                  }}
                 >
                   <svg
                     className="fill-current w-6 h-6 text-red-600"
