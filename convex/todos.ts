@@ -6,6 +6,18 @@ export const get = query(async ({ db }) => {
   return todos;
 });
 
+export const addTodo = mutation({
+  args: {
+    title: v.string(),
+  },
+  handler: async ({ db }, { title }) => {
+    await db.insert("todos", {
+      title,
+      done: false,
+    });
+  },
+});
+
 export const updateTodo = mutation({
   args: {
     _id: v.id("todos"),
