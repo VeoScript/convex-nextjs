@@ -42,6 +42,7 @@ const CreateTodo = () => {
           </label>
           <div className="flex flex-row w-full overflow-hidden rounded-xl">
             <input
+              autoFocus
               type="text"
               id="task"
               className="flex flex-row items-center justify-between w-full p-3 outline-none bg-accent-3"
