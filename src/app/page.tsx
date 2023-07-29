@@ -25,6 +25,15 @@ export default function Home() {
           <button
             type="button"
             className="w-auto outline-none px-3 py-1 text-sm text-white bg-red-600 transition-all ease-in-out duration-200 hover:bg-opacity-50"
+            onClick={async () => {
+              if (todos) {
+                for(let i = 0; i < todos?.length; i++) {
+                  await deleteTodo({
+                    _id: todos[i]._id,
+                  });
+                }
+              }
+            }}
           >
             Delete all
           </button>
