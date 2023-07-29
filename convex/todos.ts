@@ -29,3 +29,12 @@ export const updateTodo = mutation({
     });
   },
 });
+
+export const deleteTodo = mutation({
+  args: {
+    _id: v.id("todos"),
+  },
+  handler: async ({ db }, { _id }) => {
+    await db.delete(_id);
+  },
+});
