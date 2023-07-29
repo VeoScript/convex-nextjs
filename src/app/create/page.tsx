@@ -25,7 +25,7 @@ const CreateTodo = () => {
   return (
     <>
       <div className="flex flex-row items-center justify-between w-full max-w-xl">
-        <h1 className="font-bold text-xl">Add Task</h1>
+        <h1 className="font-bold text-base">Add Task</h1>
         <div className="flex flex-row items-center overflow-hidden rounded-xl">
           <Link
             href="/"
@@ -37,7 +37,7 @@ const CreateTodo = () => {
       </div>
       <div className="flex flex-col items-center w-full max-w-xl p-3 space-y-3 rounded-xl border border-neutral-700 bg-accent-2">
         <form onSubmit={handleAddTask} className="flex flex-col w-full gap-y-3">
-          <label htmlFor="task" className="text-sm ml-1">
+          <label htmlFor="task" className="text-xs ml-1">
             Task
           </label>
           <div className="flex flex-row w-full overflow-hidden rounded-xl">

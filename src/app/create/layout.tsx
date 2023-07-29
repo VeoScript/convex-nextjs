@@ -10,7 +10,7 @@ export default function AddTaskLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="flex flex-col items-center justify-center w-full h-screen space-y-5">
+    <main className="flex flex-col items-center justify-center w-full h-screen px-5 py-3 md:px-0 md:py-0 gap-y-5">
       {children}
     </main>
   );

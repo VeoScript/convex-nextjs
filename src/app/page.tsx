@@ -17,9 +17,9 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-full h-screen space-y-5">
-        <div className="flex flex-row items-center justify-between w-full max-w-xl">
-          <h1 className="font-bold text-xl">Convex + NextJS</h1>
+      <div className="flex flex-col items-center justify-center w-full h-screen px-5 py-3 md:px-0 md:py-0 gap-y-5">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-xl gap-y-3 md:gap-y-0">
+          <h1 className="font-bold text-base">Convex + NextJS</h1>
           <div className="flex flex-row items-center overflow-hidden rounded-xl">
             <Link
               href="/create"
