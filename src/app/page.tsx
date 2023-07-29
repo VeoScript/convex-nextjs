@@ -1,24 +1,46 @@
 "use client";
 
-import { useQuery, useMutation } from "convex/react";
-
-import { api } from "../../convex/_generated/api";
+import Link from "next/link";
 import clsx from "clsx";
+
+import { useQuery, useMutation } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 export default function Home() {
   const todos = useQuery(api.todos.get);
-  const updateTodo = useMutation(api.todos.updateTodo)
+  const updateTodo = useMutation(api.todos.updateTodo);
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen space-y-5">
-      <h1 className="font-bold text-xl">Convex + NextJS</h1>
+      <div className="flex flex-row items-center justify-between w-full max-w-xl">
+        <h1 className="font-bold text-xl">Convex + NextJS</h1>
+        <div className="flex flex-row items-center overflow-hidden rounded-xl">
+          <Link
+            href="/create"
+            className="w-auto outline-none px-3 py-1 text-sm text-white bg-blue-600 transition-all ease-in-out duration-200 hover:bg-opacity-50"
+          >
+            Add
+          </Link>
+          <button
+            type="button"
+            className="w-auto outline-none px-3 py-1 text-sm text-white bg-red-600 transition-all ease-in-out duration-200 hover:bg-opacity-50"
+          >
+            Delete all
+          </button>
+        </div>
+      </div>
       <div className="flex flex-col items-center w-full max-w-xl p-3 space-y-3 rounded-xl border border-neutral-700 bg-accent-2">
-        {todos === undefined && <h2 className="font-light italic">Loading...</h2>}
+        {todos === undefined && (
+          <h2 className="mt-3 font-light text-sm">Loading...</h2>
+        )}
         <ul className="flex flex-col items-center w-full space-y-3">
           {todos?.map((todo) => (
             <li
               key={todo._id}
-              className={clsx("flex flex-row items-center justify-between w-full p-3 rounded-xl bg-accent-3", todo.done ? 'line-through decoration-blue-500' : 'no-underline')}
+              className={clsx(
+                "flex flex-row items-center justify-between w-full p-3 rounded-xl bg-accent-3",
+                todo.done ? "line-through decoration-blue-500" : "no-underline"
+              )}
             >
               <span>{todo.title}</span>
               {todo.done ? (
@@ -28,8 +50,8 @@ export default function Home() {
                   onClick={async () => {
                     await updateTodo({
                       _id: todo._id,
-                      done: todo.done ? false : true
-                    })
+                      done: todo.done ? false : true,
+                    });
                   }}
                 >
                   <svg
@@ -53,8 +75,8 @@ export default function Home() {
                   onClick={async () => {
                     await updateTodo({
                       _id: todo._id,
-                      done: todo.done ? false : true
-                    })
+                      done: todo.done ? false : true,
+                    });
                   }}
                 >
                   <svg
