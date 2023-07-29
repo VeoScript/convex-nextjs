@@ -19,7 +19,9 @@ export default function RootLayout({
   return (
     <ConvexClientProvider>
       <html lang="en">
-        <body className={clsx(inter.className, 'text-white bg-accent-1')}>{children}</body>
+        <body className={clsx(inter.className, "text-white bg-accent-1")}>
+          {children}
+        </body>
       </html>
     </ConvexClientProvider>
   );
